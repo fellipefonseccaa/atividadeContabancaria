@@ -1,0 +1,57 @@
+public class ContaBancaria {
+
+    private String numeroConta;
+    private String titular;
+    private double saldo;
+
+    public ContaBancaria(String numeroConta, String titular, double saldoInicial) {
+        this.numeroConta = numeroConta;
+        this.titular = titular;
+        this.saldo = saldoInicial;
+    }
+
+    public void depositar(double valor) {
+
+        if (valor <= 0) {
+            System.out.println("Depósito inválido. O valor deve ser positivo.");
+            return;
+        }
+
+        saldo += valor;
+        System.out.println("Depósito realizado com sucesso.");
+        System.out.println("Saldo atual: " + saldo);
+    }
+
+    public void sacar(double valor) {
+
+        if (valor <= 0) {
+            System.out.println("Valor de saque inválido.");
+            return;
+        }
+
+        if (valor > saldo) {
+            System.out.println("Saque não permitido. Saldo insuficiente.");
+            return;
+        }
+
+        saldo -= valor;
+
+        int valorInt = (int) valor;
+
+        int c100 = valorInt / 100;
+        valorInt = valorInt % 100;
+
+        int c50 = valorInt / 50;
+        valorInt = valorInt % 50;
+
+        int c20 = valorInt / 20;
+        valorInt = valorInt % 20;
+
+        int c10 = valorInt / 10;
+        valorInt = valorInt % 10;
+
+        int c5 = valorInt / 5;
+        valorInt = valorInt % 5;
+
+        int c2 = valorInt / 2;
+        valorInt = valorInt % 2;
